@@ -1,0 +1,11 @@
+{
+    "env": "dev",
+    "port": 8080,
+    "services": {
+        "mongo": {
+            "host": "mongodb://",
+            "service": "posts",
+            "port": "27017"
+        }
+    }
+}
