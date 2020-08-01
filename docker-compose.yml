@@ -1,17 +1,17 @@
-version: "2"
+# Prod default
+version: "3"
 services:
-  milky-way-service:
-    container_name: milky-way-service
-    restart: always
+  app:
+    container_name: app
+    # restart: always
     build: .
-    ports:
-      - "8080:8080"
+    image: ${USERNAME}/${IMAGE}:latest
     links:
       - mongo
+    environment: 
+      NODE_ENV: "prod"
   mongo:
     container_name: mongo
     image: mongo
-    # volumes:
-    #   - ./data:/data/db 
-    ports:
-      - "27017:27017"
+    # ports:              # WHAT SHOULD PORTS BE FOR PROD?
+    #   - "27017:27017"

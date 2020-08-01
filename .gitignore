@@ -1,5 +1,8 @@
-npm-debug.log*
+config.json
 node_modules/
+npm-debug.*
 dist
 *.tgz
-config.json
+
+# macOS
+.DS_Store

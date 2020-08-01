@@ -3,21 +3,21 @@
   "version": "1.0.0",
   "description": "Milky Way Service",
   "main": "index.js",
+  "license": "ISC",
   "scripts": {
-    "start": "node index.js --exec babel-node --presets babel-preset-env",
-    "dev": "nodemon index.js --exec babel-node --presets babel-preset-env",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "rimraf dist/ && babel ./ --out-dir dist/ --ignore ./node_modules,./.babelrc,./package.json,./npm-debug.log --copy-files",
+    "start": "npm run build && node dist/index.js",
+    "dev": "nodemon --exec babel-node index.js"
   },
   "author": "Noah Davidson",
-  "license": "ISC",
   "devDependencies": {
     "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-loader": "^8.1.0",
-    "babel-preset-env": "^1.7.0",
+    "babel-preset-es2015": "^6.24.1",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "rimraf": "^3.0.2"
   },
   "dependencies": {
     "axios": "^0.19.2",
