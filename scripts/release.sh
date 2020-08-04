@@ -1,29 +1,23 @@
-#!/bin/bash
+# #!/bin/bash
 
-# Import the settings from the common settings file
-source ./project_settings.sh
+# # TODO replace this with dockerhub build rules w/ github
 
-set -ex
+# # Import the settings from the common settings file
+# source ./project_settings.sh
 
-# ensure we're up to date
-git pull
+# set -ex
 
-# bump version
-docker run --rm -v "$PWD":/app treeder/bump patch
-version=`cat VERSION`
-echo "version: $version"
+# # ensure we're up to date
+# # git pull
 
-# run build
-./build.sh
+# # bump version
+# docker run --rm -v "$PWD":/app treeder/bump patch
+# version=`cat VERSION`
+# echo "version: $version"
 
-# tag it
-git add -A
-git commit -m "version $version"
-git tag -a "$version" -m "version $version"
-git push
-git push --tags
-docker tag $USERNAME/$IMAGE:latest $USERNAME/$IMAGE:$version
+# # run build
+# ./build.sh
 
-# push it
-docker push $USERNAME/$IMAGE:latest
-docker push $USERNAME/$IMAGE:$version
+# # tag it
+# git tag -a "$version" -m "version $version"
+# git push --tags

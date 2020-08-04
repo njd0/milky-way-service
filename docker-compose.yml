@@ -5,13 +5,13 @@ services:
     container_name: app
     # restart: always
     build: .
-    image: ${USERNAME}/${IMAGE}:latest
-    links:
-      - mongo
+    image: ${USERNAME}/${IMAGE}
+    env_file: 
+      - .env
+  db:
+    image: postgres
+    # restart: always
     environment: 
-      NODE_ENV: "prod"
-  mongo:
-    container_name: mongo
-    image: mongo
-    # ports:              # WHAT SHOULD PORTS BE FOR PROD?
-    #   - "27017:27017"
+      - POSTGRES_USER=${DB_USER}
+      - POSTGRES_PASSWORD=${DB_PASS}
+      - POSTGRES_DB=${DB_NAME}

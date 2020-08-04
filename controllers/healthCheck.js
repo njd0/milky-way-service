@@ -1,4 +1,4 @@
 module.exports = async function healthCheck (req, res) {
-    // check db connection
+    // await req.client.authenticate();
     return res.status(200).send('OK');
 }
