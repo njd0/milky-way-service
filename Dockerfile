@@ -1,4 +1,4 @@
-FROM node:latest
+FROM node:lts-slim 
 
 WORKDIR /usr/src/app
 
@@ -8,6 +8,6 @@ RUN npm install
 
 COPY . ./
 
-EXPOSE $PORT
+EXPOSE 8000
 
 CMD [ "npm", "start" ]

@@ -23,6 +23,9 @@ function connect(config) {
 
     console.log("connectionURI", connectionURI)
 
+    // TODO setup exponential backoff for connects
+    // start at 1 second
+    // try max 5 - 10 times
     const sequelize = new Sequelize(connectionURI);
 
     return sequelize;

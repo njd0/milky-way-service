@@ -1,12 +1,12 @@
-// TODO 
-// - initialize depenpencies from their individual factories
-// - return initialized dependencies
+import Post from "../models/post";
+import initPostService from "./post";
 
-// requirements
-// - init once 
-// - require anywhere
+function initServices() {
+    const post = initPostService(Post);
 
+    return {
+        post,
+    }
+}
 
-// Thoughts
-// - wrap services in factory init
-// - pass in client
+export default initServices;

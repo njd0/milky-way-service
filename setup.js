@@ -1,19 +1,18 @@
 import asynConfig from "./utils/asyncConfig";
-import {connect} from "./connections/sequalize";
-import postModelInit from "./models/post";
+import {connect} from "./connections/db";
+import initServices from "./services";
 
 export default async function setup() {
     const config = asynConfig();
     console.log("THIS IS MY CONFIG", config)
 
-    const sequalize = connect(config);
+    const client = await connect(config);
 
-    // TODO init services here
-    const post = await postModelInit(sequalize);
-    console.log("MODELS", post === sequalize.models.Post, sequalize.models.Post);
+    const services = initServices();
 
     return {
+        client,
         config,
-        sequalize,
+        services,
     };
 }

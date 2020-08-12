@@ -1,0 +1,37 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: milky-way
+spec:
+  selector:
+    app: milky-way
+  ports:
+    - port: 8000
+      targetPort: 8000
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: milky-way
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: milky-way
+  template:
+    metadata:
+      labels:
+        app: milky-way
+    spec:
+      containers:
+        - name: milky-way
+          image: docker.io/noahdavidson/milky-way-service:latest
+          ports:
+            - containerPort: 8000
+          env:
+            - name: DB_IP
+              value: mongo
+          imagePullPolicy: Always
+      imagePullSecrets:
+        - name: regcred
