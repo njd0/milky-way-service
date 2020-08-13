@@ -1,8 +1,8 @@
 const { body } = require('express-validator');
 
 export default {
-    createPost: () => ([
+    createPost: [
         body('createdBy').isUUID(),
         body('imageSrc').isString(),
-    ]),
+    ],
 };

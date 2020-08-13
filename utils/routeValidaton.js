@@ -1,6 +1,6 @@
 const { validationResult } = require('express-validator');
 // TODO CHECK IF THIS WORKS
-export const routeValidator = (validation) => validation =>
+export const routeValidaton = (validation) =>
 (req, res, next) => {
     const errors = validationResult(req);
     if (!errors.isEmpty()) {
